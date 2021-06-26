@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>insert title here</title>
+</head>
+<body>
+	<div th:fragment="p-image">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-4">
+				<img alt="image" th:src="@{/img/picher1.jpeg}">
+			</div>
+			<div class="col-2"></div>
+			<div class="col-4">
+				<img alt="image" th:src="@{/img/picher2.jpeg}" class="float-right">
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+	<div th:fragment="p-image2">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-4">
+				<img alt="image" th:src="@{/img/picher1.jpeg}">
+			</div>
+			<div class="col-4">
+				<img alt="image" th:src="@{/img/picher2.jpeg}" class="float-right">
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+	<div th:fragment="index-image">
+		<div class="row">
+			<div class="col-3">
+				<img alt="image" th:src="@{/img/batter2.jpeg}">
+			</div>
+			<div class="col-3" style="text-align:center;">
+				<img alt="image" th:src="@{/img/picher1.jpeg}">
+			</div>
+			<div class="col-3" style="text-align:center;">
+				<img alt="image" th:src="@{/img/picher2.jpeg}" >
+			</div>
+			<div class="col-3">
+				<img alt="image" th:src="@{/img/batter1.jpeg}" class="float-right">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

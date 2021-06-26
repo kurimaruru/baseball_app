@@ -1,0 +1,21 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>insert title here</title>
+</head>
+<body>
+	<div th:fragment="menu" th:remove="tag">
+		<div class="col-2"></div>
+		<div class="col-8" style="margin:0 auto;">
+			<p style="font-weight:bold;">Menu</p>
+			<a class="menu" th:href="@{/write}">打者登録</a> 
+			<a class="menu" th:href="@{/p_write}">投手登録</a> 
+			<a class="menu" th:href="@{/list}">打者一覧</a> 
+			<a class="menu" th:href="@{/p_list}">投手一覧</a> 
+			<a class="menu" th:href="@{/ranking}">ランキング一覧へ</a>
+		</div>
+		<div class="col-2"></div>
+	</div>
+</body>
+</html>

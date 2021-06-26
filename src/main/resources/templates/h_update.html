@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/2236e39c35.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div th:replace="~{layouts/batter-image :: b-image2}" ></div>
+	<div class="write-main" style="background: linear-gradient(#ffffff,#7f7f7f)">
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-8 card">
+			<h4 style="margin: 10px auto;">打者登録</h4>
+			<form th:action="@{/insert}" th:object="${form}" method="post" class="hitter-form" autocomplete="off">
+				名　前<input type="text" th:field="*{name}" placeholder="名前" class="h-form">
+				打　数<input type="number" th:field="*{at_bat}" min="0" value="0" placeholder="打数" class="h-form">
+				安　打<input type="number" th:field="*{hit}" min="0" value="0" placeholder="ヒット数" class="h-form">
+				本塁打<input type="number" th:field="*{homerun}" min="0" value="0" placeholder="ホームラン数" class="h-form">
+				打　点<input type="number" th:field="*{point}" min="0" value="0" placeholder="打点" class="h-form">
+				四死球<input type="number" th:field="*{four}" min="0" value="0" placeholder="四死球" class="h-form">
+				盗　塁<input type="number" th:field="*{stolen}" min="0" value="0" placeholder="盗塁" class="h-form">
+				<input type="hidden" th:if="${title} == '更新' " th:field="*{id}" >
+				<input type="submit" value="登録" class="btn btn-success" style="margin: 10px auto; ">
+				<a th:href="@{/}" class="btn btn-primary">トップへ</a>
+			</form>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	</div>
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>

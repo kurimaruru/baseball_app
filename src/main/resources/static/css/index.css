@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.title{color:white;}
+
+.menu-items{
+	margin:40px 0;
+	text-align:center;
+	border-bottom:1px solid black;
+	padding-bottom:10px;
+}
+
+.main{
+	border-bottom:1px solid black;
+	padding-bottom:10px;
+}
+
+.menu{
+	margin:0 10px;
+	color:#180614;
+}
+
+.image-cover{
+	background-color:#f5f5f5;
+	color:black;
+	font-family:serif;
+	font-weight: 1400; 
+}
+
+.jumbotron{
+	text-align:center;
+	background-color:rgba(255,255,255,0.8);
+	background-blend-mode:lighten;
+	}
+
+.plain{
+	text-align:center;
+	font-family:serif;
+	marging:20px 0;
+}
+
+.card-body{
+	box-shadow: 12px 14px 16px -3px rgba(10,10,10,0.62);
+	background-color:#fff6f6;
+}
+
+.card-icon{
+	margin:15px;
+	text-align:center;
+	color:#ff8989;
+}
+
+.card-title{
+	padding:10px;
+	font-weight:bold;
+}
+
+.footer{
+	margin-top:3px;
+	text-align:center;
+	color:white;
+	background-color:#343a40;
+}
+
+.footer2{
+	text-align:center;
+	color:white;
+	background-color:#343a40;
+}
+
+.footer-a-tag{color:white;}
+
+.guide{margin-top:15px;}
+
+.footer-icon{border-bottom:1px solid white; padding:10px 0;}
+
+/* write.html */
+.write-main{
+	
+	height:600px;
+}
+.write-main2{
+	height:500px;
+}
+.hitter-form{width:100%;}
+.h-form{
+	width:100%;
+	border-radius: 3px;
+	border: 2px solid #ddd;
+	box-sizing: border-box;
+}
+
+.warn-msg{
+	color:red;
+	text-align:center;
+}
+.err-msg{
+	color:red;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+

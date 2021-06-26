@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/2236e39c35.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>ranking</title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div th:replace="~{layouts/picher-image :: index-image}"></div>
+
+	<div class="row" style="background: linear-gradient(#ffffff,#7f7f7f)">
+		<div class="col-2"></div>
+		<div class="col-8">
+			<p th:if="${title} == '削除'" th:text="本当に削除してもよろしいでしょうか" class="warn-msg"></p>
+	<table class="table">
+		<thead class="thead-dark">
+		<tr>
+			<th scope="col">名前</th>
+			<th scope="col">打数</th>
+			<th scope="col">打率</th>
+			<th scope="col">出塁率</th>
+			<th scope="col">HR</th>
+			<th scope="col">打点</th>
+			<th scope="col">盗塁</th>
+			<th scope="col">四死球</th>
+		</tr>
+		</thead>
+		<tr th:object="${form}">
+			<td th:text="*{name}"></td>
+			<td th:text="*{at_bat}"></td>
+			<td
+				th:text="*{#numbers.formatDecimal(hit / at_bat * 10,0,'COMMA',2,'POINT')}"></td>
+			<td
+				th:text="*{#numbers.formatDecimal(hit / (at_bat - four) * 10,0,'COMMA',2,'POINT')}"></td>
+			<td th:text="*{homerun}"></td>
+			<td th:text="*{point}"></td>
+			<td th:text="*{stolen}"></td>
+			<td th:text="*{four}"></td>
+		</tr>
+	</table>
+	<form th:action="@{/delete}" th:if="${title} == '削除'" style="text-align:center;">
+		<input type="hidden" th:field="*{form.id}"> 
+		<input type="submit" value="削除" class="btn btn-danger">
+		<a th:href="@{/list}" class="btn btn-primary">一覧に戻る</a>
+	</form>
+	<a th:if="${title} == '詳細'" th:href="@{/list}" class="btn btn-primary">一覧に戻る</a>
+		</div>
+		<div class="col-2"></div>
+	</div>
+
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>

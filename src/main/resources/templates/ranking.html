@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head}">
+<meta charset="UTF-8">
+<title>ranking</title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div class="batter-group" style="margin-bottom: 15px;">
+		<h3 style="text-align: center; font-weight: bold;">～打者部門タイトル～</h3>
+	</div>
+
+	<div class="row" style="text-align:center;">
+		<div class="col-2"></div>
+		<div class="col-4 card " style="background: linear-gradient(#fdfdfd,#bdbdbd);">
+			<h3>ホームラン</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4cff;">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">H R</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${homeruns[i].name}"></td>
+							<td th:text="${homeruns[i].homerun}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-4 card" style="background: linear-gradient(#fdfdfd,#bdbdbd)">
+			<h3>打率</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4cff;">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">打率</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${hits[i].name}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(hits[i].hit / hits[i].at_bat * 10,0,'COMMA',2,'POINT')}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	<div class="row" style="margin-top:20px; text-align:center;">
+		<div class="col-2"></div>
+		<div class="col-4 card" style="background: linear-gradient(#fefefe,#bebebe)">
+			<h3>打点</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4ca5; ">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">打点</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${points[i].name}"></td>
+							<td th:text="${points[i].point}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-4 card" style="background: linear-gradient(#fefefe,#bebebe)">
+			<h3>盗塁</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4ca5;">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">盗塁</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${stolens[i].name}"></td>
+							<td th:text="${stolens[i].stolen}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	<div class="batter-group" style="margin:15px 0 ;">
+		<h3 style="text-align: center; font-weight: bold;">～投手部門タイトル～</h3>
+	</div>
+	<div class="row" style="text-align:center;">
+		<div class="col-2"></div>
+		<div class="col-4 card" style="background: linear-gradient(#ffffff,#bfbfbf);">
+			<h3>最小失点</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4c4c;">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">失点</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${givvens[i].name}"></td>
+							<td th:text="${givvens[i].givven}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-4 card" style="background: linear-gradient(#ffffff,#bfbfbf);">
+			<h3>無四死球</h3>
+				<table class="table" style="margin-bottom: 30px;">
+					<thead style="background-color: #ff4c4c; ">
+						<tr>
+							<th scope="col">順位</th>
+							<th scope="col">名前</th>
+							<th scope="col">無四球</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" i ,rank: ${#numbers.sequence(0,2)}">
+							<td scope="row" th:text="${rank.count}"></td>
+							<td th:text="${four_ball[i].name}"></td>
+							<td th:text="${four_ball[i].four_ball}"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-2"></div>
+		<div class="col-12" style="text-align:center; margin:20px;">
+			<a th:href="@{/}" class="btn btn-primary" style="width:150px;">トップへ</a>
+		</div>
+	</div>
+
+
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>
+

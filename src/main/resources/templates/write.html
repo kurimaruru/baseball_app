@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head}">
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div th:replace="~{layouts/batter-image :: b-image2}" ></div>
+	<div class="write-main" style="background: linear-gradient(#ffffff,#7f7f7f)" >
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-8 card" style="margin-top:50px;">
+			<h4 style="margin: 10px auto; padding-top:20px;">打者登録</h4>
+			<form th:action="@{/insert}" th:object="${form}" method="post" class="hitter-form" autocomplete="off">
+				<input type="text" th:field="*{name}" placeholder="名前" class="h-form">
+				<input type="number" th:field="*{at_bat}" min="0" value="0" placeholder="打数" class="h-form">
+				<input type="number" th:field="*{hit}" min="0" value="0" placeholder="ヒット数" class="h-form">
+				<input type="number" th:field="*{homerun}" min="0" value="0" placeholder="ホームラン数" class="h-form">
+				<input type="number" th:field="*{point}" min="0" value="0" placeholder="打点" class="h-form">
+				<input type="number" th:field="*{four}" min="0" value="0" placeholder="四死球" class="h-form">
+				<input type="number" th:field="*{stolen}" min="0" value="0" placeholder="盗塁" class="h-form">
+				<input type="hidden" th:if="${title} == '更新' " th:field="*{id}" >
+				<input type="submit" value="登録" class="btn btn-success" style="margin: 10px auto; ">
+				<a th:href="@{/}" class="btn btn-primary">トップへ</a><br>
+				<div class="err-msg">
+					<ul style="list-style:none;">
+						<li><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></li>
+						<li><span th:if="${#fields.hasErrors('at_bat')}"  th:text="打数" th:errors="*{at_bat}"></span></li>
+						<li><span th:if="${#fields.hasErrors('hit')}" th:errors="*{hit}"></span></li>
+						<li><span th:if="${#fields.hasErrors('homerun')}" th:errors="*{homerun}"></span></li>
+						<li><span th:if="${#fields.hasErrors('point')}" th:errors="*{point}"></span></li>
+						<li><span th:if="${#fields.hasErrors('four')}" th:errors="*{four}"></span></li>
+						<li><span th:if="${#fields.hasErrors('stolen')}" th:errors="*{stolen}"></span></li>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	</div>
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>

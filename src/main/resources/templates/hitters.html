@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head}">
+<meta charset="UTF-8">
+<title>選手一覧</title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div th:replace="~{layouts/batter-image :: b-image} "></div>
+	<div class="main" style="background: linear-gradient(#ffffff,#7f7f7f);">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">名前</th>
+							<th scope="col">打率</th>
+							<th scope="col">HR</th>
+							<th scope="col">打点</th>
+							<th scope="col">盗塁</th>
+							<th scope="col">詳細</th>
+							<th scope="col">更新</th>
+							<th scope="col">削除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="x : ${list}">
+							<td th:text="${x.name}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(x.hit / x.at_bat * 10,0,'COMMA',2,'POINT')}"></td>
+							<td th:text="${x.homerun}"></td>
+							<td th:text="${x.point}"></td>
+							<td th:text="${x.stolen}"></td>
+							<td><a th:href="@{/data/{y} (y = ${x.id})}" class="btn btn-light" style="color:#00a968;">詳細</a></td>
+							<td><a th:href="@{/update/{y} (y = ${x.id})}" class="btn btn-light" style="color:#00afcc;">更新</a></td>
+							<td><a th:href="@{/delete/{y} (y = ${x.id})}" class="btn btn-danger">削除</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<a th:href="@{/}" class="btn btn-primary">トップへ</a>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>

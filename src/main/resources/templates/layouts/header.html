@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div th:fragment="header" th:remove="tag">
+		<nav class="navbar navbar-dark bg-dark">
+			<h1 class="col-4 title">ManageBall</h1>
+			<div>
+				<a th:href="@{/list}" class="btn btn-primary" th:if="${title} == 'top' ">打者検索</a>
+				<a th:href="@{/p_list}" class="btn btn-success" th:if="${title} == 'top' ">投手検索</a>
+			</div>
+			<form th:action="@{/search}" method="post" class="form-inline" th:if="${title} == 'hitters' " autocomplete="off">
+				<input class="form-control mr-sm-2" type="search" placeholder="名前" aria-label="Search" name="name">
+    			<button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
+			</form>
+			<form th:action="@{/search2}" method="post" class="form-inline" th:if="${title} == 'pichers' " autocomplete="off">
+				<input class="form-control mr-sm-2" type="search" placeholder="名前" aria-label="Search" name="name">
+    			<button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
+			</form>
+		</nav>
+	</div>
+</body>
+</html>

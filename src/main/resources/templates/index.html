@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<link th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://kit.fontawesome.com/2236e39c35.js" crossorigin="anonymous"></script>
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="image-cover">
+			<div class="jumbotron" 
+			th:style=" 'background: url(/img/baseball3.jpg) no-repeat center center fixed;' ">
+				<h2 class="display-4">見えるデータへ</h2>
+				<h4 class="lead">データを可視化すると、野球がもっと楽しくなる。</h4>
+				<h4 class="lead">チームの成績を管理し、チームの特徴を知ろう。</h4>
+			</div>
+		</div>
+		<div class="plain">
+			<h5>試合ごとの成績を記録することができる、チームマネジメントツールです。</h5>
+		</div>
+		
+	</div>
+	
+	<div style="margin:0 0 10px 0">
+		<div th:replace="~{layouts/picher-image :: index-image}" ></div>
+	</div>
+	<div class="infomation" style="margin:30px 0;">
+		<h1 style="text-align:center; margin:30px;">期待できる効果</h1>
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<div class="card float-left" style="width:430px;">
+					<div class="card-body">
+						<h3 class="card-title">選手の課題がわかる</h3>
+						<div class="card-icon">
+							<i class="far fa-chart-bar fa-3x"></i>
+							<i class="fas fa-user-edit fa-3x" style="margin:0 50px;"></i>
+							<i class="fas fa-chart-line fa-3x"></i>
+						</div>
+						<p class="card-text">　ManageBallでは、選手たちが簡単に自らの記録を振り返ることができます。
+						そこで選手たちは課題を見つけ、課題克服のために練習に取り組むことが期待されます。</p>
+					</div>
+				</div>
+				<div class="card float-right" style="width:430px;">
+					<div class="card-body">
+						<h3 class="card-title">選手達の競争意識が芽生える</h3>
+						<div class="card-icon">
+							<i class="fas fa-list-ol fa-3x"></i>
+							<i class="fas fa-users fa-3x" style="margin:0 50px;"></i>
+							<i class="fab fa-gripfire fa-3x"></i>
+						</div>
+						<p class="card-text">　ManageBallでは、選手たちの記録をランキング形式で見ることができます。
+						これらを意識することで選手たちは仲間と切磋琢磨して練習に取り組むことが期待されます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>

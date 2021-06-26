@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head}">
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div class="header" th:replace="~{layouts/header :: header}"></div>
+	<div class="menu-items">
+		<div class="row">
+			<div th:replace="~{layouts/menu :: menu}"></div>
+		</div>
+	</div>
+	<div th:replace="~{layouts/picher-image :: p-image2}" ></div>
+	<div class="write-main" style="background: linear-gradient(#ffffff,#7f7f7f)">
+	<div class="row ">
+		<div class="col-2"></div>
+		<div class="col-8 card" style="margin-top:50px;" >
+			<h4  style="margin: 10px auto;">投手登録</h4>
+			<form th:action="@{/p_insert}" th:object="${p_form}" method="post" class="hitter-form" autocomplete="off">
+				<input type="text" th:field="*{name}" class="h-form" placeholder="名前">
+				<input type="number" th:field="*{inning}" min="0" value="0" class="h-form" placeholder="投球回数">
+				<input type="number" th:field="*{givven}" min="0" value="0" class="h-form" placeholder="失点">
+				<input type="number" th:field="*{four_ball}" min="0" value="0" class="h-form" placeholder="四死球">
+				<input type="hidden" th:if="${title} == 'p更新' " th:field="*{id}" class="h-form" >
+				<input type="submit" value="登録" class="btn btn-success" style="margin: 10px auto; ">
+				<a th:href="@{/}" class="btn btn-primary">トップへ</a>
+				<div class="err-msg">
+					<ul style="list-style:none;">
+						<li><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></li>
+						<li><span th:if="${#fields.hasErrors('inning')}" th:errors="*{inning}"></span></li>
+						<li><span th:if="${#fields.hasErrors('givven')}" th:errors="*{givven}"></span></li>
+						<li><span th:if="${#fields.hasErrors('four_ball')}" th:errors="*{four_ball}"></span></li>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	</div>
+	<div class="footer">
+		<div th:replace="~{layouts/footer :: footer}"></div>
+	</div>
+</body>
+</html>
